@@ -6,7 +6,7 @@
 
 $config = [
     'host' => 'localhost',
-    'user' => '',
+    'user' => 'root',
     'password' => '',
     'dbname' => '',
 ];
