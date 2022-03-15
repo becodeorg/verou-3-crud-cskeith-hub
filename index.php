@@ -38,6 +38,10 @@ switch ($action) {
         echo "chicken";
         require 'overview.php';
         break;
+    case 'edit':
+        echo "mouse";
+        create($cardRepository);
+        require 'edit.php';
     default:
         require 'overview.php';
         break;
