@@ -20,7 +20,7 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
-
+var_dump($cards);
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
 $action = $_GET['action'] ?? null;
@@ -32,7 +32,7 @@ switch ($action) {
         $this->create();
         break;
     default:
-        $this->overview();
+        require 'overview.php';;
         break;
 }
 

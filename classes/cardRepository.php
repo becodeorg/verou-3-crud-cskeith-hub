@@ -25,13 +25,24 @@ class CardRepository
     }
 
     // Get all
-    public function get(): array
+    public function get(): PDOStatement
     {
         // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
+        $query = "SELECT * FROM `pokemon`"; 
+        
+        $result = $this->databaseManager->connection->query($query);   
+        return $result; 
+        // return 
+        // [
+        //     ['name' => 'Colin'],
+        //     ['type' => 'human'],
+        //     ['hp' => '1000'],
+        //     ['ability' => 'Sleep'],
+        //     ['attack1' => 'Snor'],
+        //     ['attack2' => 'Fart'],
+        //     ['resistance' => 'Bullshit'],
+        //     ['weakness' => 'Food'],
+        // ];
 
         // We get the database connection first, so we can apply our queries with it
         // return $this->databaseManager->connection-> (runYourQueryHere)
