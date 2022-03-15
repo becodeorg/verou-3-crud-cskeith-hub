@@ -14,6 +14,13 @@
 <ul>
     <?php foreach ($cards as $card) : ?>
         <li><?= $card['name'] ?></li>
+        <li><?= $card['type'] ?></li>
+        <li><?= $card['hp'] ?></li>
+        <li><?= $card['ability'] ?></li>
+        <li><?= $card['attack1'] ?></li>
+        <li><?= $card['attack2'] ?></li>
+        <li><?= $card['resistance'] ?></li>
+        <li><?= $card['weakness'] ?></li>
     <?php endforeach; ?>
 </ul>
 
