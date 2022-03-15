@@ -55,6 +55,6 @@ A typical `CRUD` implementation allows the user or admin to create, read, update
   - Upon deleting an item from your list, instead of removing the item from the database, check how you can apply **soft deletes** in your application.
 
   
-![](https://media.giphy.com/media/l3V0mgFspVuDAJK9y/giphy.gif)
 
-Sorry, best I could find...
+
+
