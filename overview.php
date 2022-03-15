@@ -11,7 +11,7 @@
 
 <h1>Goodcard - track your collection of Pokémon cards</h1>
 
-<form action="/action_page.php">
+<form action="?action=create" method="post">
   <label for="name">Name:</label><br>
   <input type="text" id="name" name="name" value=""><br>
 
@@ -27,8 +27,8 @@
   <label for="attack1">Attack1:</label><br>
   <input type="text" id="attack1" name="attack1" value=""><br>
 
-  <label for="attack1">Attack1:</label><br>
-  <input type="text" id="attack1" name="attack1" value=""><br>
+  <label for="attack2">Attack2:</label><br>
+  <input type="text" id="attack2" name="attack2" value=""><br>
 
   <label for="resistance">Resistance:</label><br>
   <input type="text" id="resistance" name="resistance" value=""><br>
@@ -37,7 +37,7 @@
   <input type="text" id="weakness" name="weakness" value=""><br>
 
   <br>
-  <input type="submit" value="Submit">
+  <input type="submit" name="submit" value="submit">
 </form> 
 
 

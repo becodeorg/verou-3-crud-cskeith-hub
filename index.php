@@ -20,19 +20,26 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
-var_dump($cards);
+
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
 $action = $_GET['action'] ?? null;
 
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
+
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
 switch ($action) {
     case 'create':
-        $this->create();
+        create($cardRepository);
+        echo "chicken";
+        require 'overview.php';
         break;
     default:
-        require 'overview.php';;
+        require 'overview.php';
         break;
 }
 
@@ -43,7 +50,15 @@ function overview()
     require 'overview.php';
 }
 
-function create()
+function create($cardRepository)
 {
+    echo "Cow";
     // TODO: provide the create logic
+    
+    if(isset($_POST['submit'])){ // in Use of submit
+    echo "Horse";
+    $cardRepository->create(); 
+
+    }  
+
 }

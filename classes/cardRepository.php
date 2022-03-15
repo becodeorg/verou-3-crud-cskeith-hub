@@ -15,7 +15,21 @@ class CardRepository
 
     public function create(): void
     {
+        
+        $name = $_POST['name'];
+        $type = $_POST['type'];
+        $hp = $_POST['hp'];
+        $ability = $_POST['ability'];
+        $attack1 = $_POST['attack1'];
+        $attack2 = $_POST['attack2'];
+        $resistance = $_POST['resistance'];
+        $weakness = $_POST['weakness'];
 
+        $query = "INSERT INTO pokemon (`name`,`type`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
+            '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance')";
+
+        $this->databaseManager->connection->query($query);      
+        echo "Dog";
     }
 
     // Get one
