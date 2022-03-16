@@ -47,6 +47,7 @@ switch ($action) {
     case 'edit':
         require 'edit.php';
         update($cardRepository);
+        break;
         
         
     default:
@@ -72,12 +73,11 @@ function create($cardRepository)
 
 function update($cardRepository)
 {
-    echo 'Cow';
     $card_id = $_GET['card_id'];
     
-    echo $card_id;
     // TODO: provide the update logic
     if(isset($_POST['submit'])){ // in Use of submit
         $cardRepository->update($card_id);
+        header("location: index.php");
     } 
 }
