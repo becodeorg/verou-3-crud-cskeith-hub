@@ -16,7 +16,7 @@ class CardRepository
     public function create(): void
     {
         
-        $name = $_POST['name'];
+        $name = $_POST['pokeName'];
         $type = $_POST['type'];
         $hp = $_POST['hp'];
         $ability = $_POST['ability'];
@@ -25,7 +25,7 @@ class CardRepository
         $resistance = $_POST['resistance'];
         $weakness = $_POST['weakness'];
 
-        $query = "INSERT INTO pokemon (`name`,`type`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
+        $query = "INSERT INTO pokemon (`pokeName`,`type`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
             '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance')";
 
         $this->databaseManager->connection->query($query);      
@@ -33,7 +33,7 @@ class CardRepository
     }
 
     // Get one
-    public function find(): array
+    public function find()
     {
         
     }
@@ -68,24 +68,16 @@ class CardRepository
     {
         echo $card_id;
         $name = $_POST['name'];
-        $type = $_POST['type'];
-        $hp = $_POST['hp'];
-        $ability = $_POST['ability'];
-        $attack1 = $_POST['attack1'];
-        $attack2 = $_POST['attack2'];
-        $resistance = $_POST['resistance'];
-        $weakness = $_POST['weakness'];
         
-        
-        $query = "UPDATE pokemon SET `pokeName`,`type`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance` = '$name', 
-        '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance' WHERE id = '$card_id';";
+        $query = "UPDATE pokemon SET pokeName = '$name' WHERE id = '$card_id';";
         $this->databaseManager->connection->query($query);
-
+        
     }
 
-    public function delete(): void
+    public function delete($card_id)
     {
-
+        $delete = "DELETE FROM `pokemon` WHERE `pokemon`.`id` = '$card_id';";
+        $this->databaseManager->connection->query($delete);
     }
 
 }

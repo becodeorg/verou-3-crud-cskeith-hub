@@ -13,7 +13,7 @@
 
 <form action="?action=create" method="post">
   <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" value=""><br>
+  <input type="text" id="name" name="pokeName" value=""><br>
 
   <label for="type">Type:</label><br>
   <input type="text" id="type" name="type" value=""><br>
@@ -43,7 +43,10 @@
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['pokeName'] ?><a href="index.php?action=edit&card_id=<?= $card['id']; ?>">Edit</a></li>
+        <li><?= $card['pokeName'] ?>
+            <a href="index.php?action=edit&card_id=<?= $card['id']; ?>">Edit</a>
+            <a href="index.php?action=delete&card_id=<?= $card['id']; ?>">Delete</a>
+        </li>
         <li><?= $card['type'] ?></li>
         <li><?= $card['hp'] ?></li>
         <li><?= $card['ability'] ?></li>

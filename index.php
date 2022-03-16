@@ -24,7 +24,8 @@ $cards = $cardRepository->get();
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
 $action = $_GET['action'] ?? null;
-$card_id = $_GET['card_id'] ?? null;
+$card_id = $_GET['card_id'] ?? null;  
+
 
 
 
@@ -46,10 +47,12 @@ switch ($action) {
         break;
     case 'edit':
         require 'edit.php';
-        update($cardRepository);
+        update($cardRepository, $card_id);
         break;
-        
-        
+    case 'delete':
+        require 'delete.php';
+        delete($cardRepository, $card_id);
+        break;  
     default:
         require 'overview.php';
         break;
@@ -71,13 +74,22 @@ function create($cardRepository)
     } 
 }
 
-function update($cardRepository)
+function update($cardRepository, $card_id)
 {
-    $card_id = $_GET['card_id'];
     
     // TODO: provide the update logic
     if(isset($_POST['submit'])){ // in Use of submit
         $cardRepository->update($card_id);
-        header("location: index.php");
+       header("location: index.php");
+    } 
+}
+
+function delete($cardRepository, $card_id)
+{
+    
+    // TODO: provide the update logic
+    if(!isset($_POST['delete'])){ // in Use of submit
+        $cardRepository->delete($card_id);
+       header("location: index.php");
     } 
 }
