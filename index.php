@@ -43,9 +43,11 @@ switch ($action) {
         require 'overview.php';
         break;
     case 'edit':
-        update($cardRepository);
         echo "mouse";
         require 'edit.php';
+        update($cardRepository);
+        
+        
     default:
         require 'overview.php';
         break;
@@ -67,10 +69,13 @@ function create($cardRepository)
         echo "Horse";
         $cardRepository->create();
     } 
-    elseif(isset($_GET['submit'])){ // in Use of submit
-        echo "Bird";
-        $cardRepository->update(); 
+}
+
+function update($cardRepository)
+{
+    // TODO: provide the create logic
+    if(isset($_POST['submit'])){ // in Use of submit
+        echo "Rat";
+        $cardRepository->update();
     } 
-
-
 }

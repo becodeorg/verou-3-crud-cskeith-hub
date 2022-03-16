@@ -66,9 +66,9 @@ class CardRepository
 
     public function update(): void
     {
-        $name = $_GET['name'];
+        $name = $_POST['name'];
        
-        $query = "UPDATE pokemon SET name = {$name} WHERE id = 1;";
+        $query = "UPDATE pokemon SET pokeName = '$name' WHERE id = 1;";
 
         $this->databaseManager->connection->query($query);
         echo "Eagel";
