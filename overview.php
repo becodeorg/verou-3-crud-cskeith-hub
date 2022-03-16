@@ -43,7 +43,7 @@
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?><a href="edit.php">Edit</a></li>
+        <li><?= $card['name'] ?><a href="?action=edit">Edit</a></li>
         <li><?= $card['type'] ?></li>
         <li><?= $card['hp'] ?></li>
         <li><?= $card['ability'] ?></li>

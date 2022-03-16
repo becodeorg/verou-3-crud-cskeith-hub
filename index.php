@@ -32,6 +32,10 @@ echo "<pre>";
 print_r($_POST);
 echo "</pre>";
 
+echo "<pre>";
+print_r($_GET);
+echo "</pre>";
+
 switch ($action) {
     case 'create':
         create($cardRepository);
@@ -39,8 +43,8 @@ switch ($action) {
         require 'overview.php';
         break;
     case 'edit':
+        update($cardRepository);
         echo "mouse";
-        create($cardRepository);
         require 'edit.php';
     default:
         require 'overview.php';
@@ -60,9 +64,13 @@ function create($cardRepository)
     // TODO: provide the create logic
     
     if(isset($_POST['submit'])){ // in Use of submit
-    echo "Horse";
-    $cardRepository->create(); 
+        echo "Horse";
+        $cardRepository->create();
+    } 
+    elseif(isset($_GET['submit'])){ // in Use of submit
+        echo "Bird";
+        $cardRepository->update(); 
+    } 
 
-    }  
 
 }
