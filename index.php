@@ -42,8 +42,8 @@ echo "</pre>";
 
 switch ($action) {
     case 'create':
+        require 'create.php';
         create($cardRepository);
-        require 'overview.php';
         break;
     case 'edit':
         require 'edit.php';
@@ -71,6 +71,7 @@ function create($cardRepository)
     
     if(isset($_POST['submit'])){ // in Use of submit
         $cardRepository->create();
+        header("location: index.php");
     } 
 }
 
@@ -88,7 +89,7 @@ function delete($cardRepository, $card_id)
 {
     
     // TODO: provide the update logic
-    if(!isset($_POST['delete'])){ // in Use of submit
+    if(empty($_POST['delete'])){ // in Use of submit
         $cardRepository->delete($card_id);
        header("location: index.php");
     } 
