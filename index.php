@@ -24,6 +24,9 @@ $cards = $cardRepository->get();
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
 $action = $_GET['action'] ?? null;
+$card_id = $_GET['card_id'] ?? null;
+
+
 
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
@@ -39,11 +42,9 @@ echo "</pre>";
 switch ($action) {
     case 'create':
         create($cardRepository);
-        echo "chicken";
         require 'overview.php';
         break;
     case 'edit':
-        echo "mouse";
         require 'edit.php';
         update($cardRepository);
         
@@ -62,20 +63,21 @@ function overview()
 
 function create($cardRepository)
 {
-    echo "Cow";
     // TODO: provide the create logic
     
     if(isset($_POST['submit'])){ // in Use of submit
-        echo "Horse";
         $cardRepository->create();
     } 
 }
 
 function update($cardRepository)
 {
-    // TODO: provide the create logic
+    echo 'Cow';
+    $card_id = $_GET['card_id'];
+    
+    echo $card_id;
+    // TODO: provide the update logic
     if(isset($_POST['submit'])){ // in Use of submit
-        echo "Rat";
-        $cardRepository->update();
+        $cardRepository->update($card_id);
     } 
 }

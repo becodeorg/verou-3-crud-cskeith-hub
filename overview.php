@@ -43,7 +43,7 @@
 
 <ul>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?><a href="index.php?action=edit">Edit</a></li>
+        <li><?= $card['pokeName'] ?><a href="index.php?action=edit&card_id=<?= $card['id']; ?>">Edit</a></li>
         <li><?= $card['type'] ?></li>
         <li><?= $card['hp'] ?></li>
         <li><?= $card['ability'] ?></li>

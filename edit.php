@@ -7,7 +7,7 @@
     <title>Edit Pokemon</title>
 </head>
 <body>
-<form action="index.php?action=edit" method="post">
+<form action="index.php?action=edit&card_id" method="post">
   <label for="name">Rename your Pokemon:</label><br>
   <input type="text" id="name" name="name" value=""><br>
   <br>

@@ -64,14 +64,14 @@ class CardRepository
 
     
 
-    public function update(): void
+    public function update($card_id)
     {
+        echo $card_id;
         $name = $_POST['name'];
-       
-        $query = "UPDATE pokemon SET pokeName = '$name' WHERE id = 1;";
-
+        
+        
+        $query = "UPDATE pokemon SET pokeName = '$name' WHERE id = '$card_id';";
         $this->databaseManager->connection->query($query);
-        echo "Eagel";
     }
 
     public function delete(): void
