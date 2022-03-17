@@ -21,8 +21,5 @@
         </li>
     <?php endforeach; ?>
 </ul>
-
-<?= $cardInfo ?>
-
 </body>
 </html>
