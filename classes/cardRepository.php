@@ -81,10 +81,50 @@ class CardRepository
         $attack2 = $_POST['attack2'];
         $resistance = $_POST['resistance'];
         $weakness = $_POST['weakness'];
-        
-        if(!empty($name))
+
+        if(!empty($name)&&($type)&&($hp)&&($ability)&&($attack1)&&($attack2)&&($resistance)&&($weakness))
         {
             $query = "UPDATE pokemon SET pokeName = ('$name'), pokeType = ('$type'), hp = ('$hp'), ability = ('$ability'), attack1 = ('$attack1'), attack2 = ('$attack2'), resistance = ('$resistance'), weakness = ('$weakness') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($name))
+        {
+            $query = "UPDATE pokemon SET pokeName = ('$name') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($type))
+        {
+            $query = "UPDATE pokemon SET pokeType = ('$type') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($hp))
+        {
+            $query = "UPDATE pokemon SET hp = ('$hp') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($ability))
+        {
+            $query = "UPDATE pokemon SET ability = ('$ability') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($attack1))
+        {
+            $query = "UPDATE pokemon SET attack1 = ('$attack1') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($attack2))
+        {
+            $query = "UPDATE pokemon SET attack2 = ('$attack2') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($resistance))
+        {
+            $query = "UPDATE pokemon SET resistance = ('$resistance') WHERE id = ('$card_id')";
+            $this->databaseManager->connection->query($query); 
+        }
+        elseif(!empty($weakness))
+        {
+            $query = "UPDATE pokemon SET weakness= ('$weakness') WHERE id = ('$card_id')";
             $this->databaseManager->connection->query($query); 
         }
         
