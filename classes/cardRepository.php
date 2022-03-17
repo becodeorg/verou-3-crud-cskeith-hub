@@ -83,7 +83,7 @@ class CardRepository
         $weakness = $_POST['weakness'];
         
         $query = "UPDATE pokemon SET pokeName = ('$name'), pokeType = ('$type'), hp = ('$hp'), ability = ('$ability'), attack1 = ('$attack1'), attack2 = ('$attack2'), resistance = ('$resistance'), weakness = ('$weakness') WHERE id = ('$card_id')";
-        $this->databaseManager->connection->query($query);  
+        $this->databaseManager->connection->query($query); 
     }
 
     public function delete($card_id)

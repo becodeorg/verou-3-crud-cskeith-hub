@@ -46,8 +46,8 @@ switch ($action) {
         find($cardRepository, $card_id);
         break;
     case 'edit':
+        require 'edit.php'; 
         update($cardRepository, $card_id);
-        require 'edit.php';
         break;
     case 'delete':
         require 'delete.php';
