@@ -26,9 +26,6 @@ $cards = $cardRepository->get();
 $action = $_GET['action'] ?? null;
 $card_id = $_GET['card_id'] ?? null;  
 
-
-
-
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 
@@ -45,8 +42,10 @@ switch ($action) {
         require 'create.php';
         create($cardRepository);
         break;
+    case 'show':
+        find($cardRepository, $card_id);
+        break;
     case 'edit':
-        echo 'Cow';
         update($cardRepository, $card_id);
         require 'edit.php';
         break;
@@ -61,37 +60,33 @@ switch ($action) {
 
 function overview()
 {
-    // Load your view
-    // Tip: you can load this dynamically and based on a variable, if you want to load another view
     require 'overview.php';
 }
 
 function create($cardRepository)
 {
-    // TODO: provide the create logic
-    
-    if(!empty($_POST['submit'])){ // in Use of submit
+    if(!empty($_POST['submit'])){ 
         $cardRepository->create();
         header("location: index.php");
     } 
 }
 
+function find($cardRepository,$card_id)
+{
+    $cardRepository->find($card_id);
+}
+
 function update($cardRepository, $card_id)
 {
-    echo 'Chicken';
-    // TODO: provide the update logic
-    if(isset($_POST['submit'])){ // in Use of submit
+    if(!empty($_POST['submit'])){ 
         $cardRepository->update($card_id);
-        echo 'Rat';
        header("location: index.php");
     } 
 }
 
 function delete($cardRepository, $card_id)
 {
-    
-    // TODO: provide the update logic
-    if(empty($_POST['delete'])){ // in Use of submit
+    if(empty($_POST['delete'])){ 
         $cardRepository->delete($card_id);
        header("location: index.php");
     } 

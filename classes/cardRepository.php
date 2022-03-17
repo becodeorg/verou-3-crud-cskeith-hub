@@ -3,6 +3,9 @@
 // This class is focussed on dealing with queries for one type of data
 // That allows for easier re-using and it's rather easy to find all your queries
 // This technique is called the repository pattern
+
+use LDAP\Result;
+
 class CardRepository
 {
     private DatabaseManager $databaseManager;
@@ -29,14 +32,18 @@ class CardRepository
             '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance')";
 
         $this->databaseManager->connection->query($query);      
-        echo "Dog";
     }
 
     // Get one
-    public function find()
+    public function find($card_id): array
     {
-        
+        $query = "SELECT pokeName, PokeType, hp, ability, attack1, attack2, weakness, resistance FROM pokemon WHERE id = ('$card_id')"; 
+        $result = $this->databaseManager->connection->query($query);  
+        $cardInfo = $result->fetch(); 
+        require 'show.php';
+        return $cardInfo;    
     }
+     
 
     // Get all
     public function get(): PDOStatement
@@ -66,7 +73,6 @@ class CardRepository
 
     public function update($card_id)
     {
-        echo 'Rabbit';
         $name = $_POST['pokeName'];
         $type = $_POST['pokeType'];
         $hp = $_POST['hp'];
@@ -77,9 +83,7 @@ class CardRepository
         $weakness = $_POST['weakness'];
         
         $query = "UPDATE pokemon SET pokeName = ('$name'), pokeType = ('$type'), hp = ('$hp'), ability = ('$ability'), attack1 = ('$attack1'), attack2 = ('$attack2'), resistance = ('$resistance'), weakness = ('$weakness') WHERE id = ('$card_id')";
-        $this->databaseManager->connection->query($query);
-        echo 'Dog';
-        
+        $this->databaseManager->connection->query($query);  
     }
 
     public function delete($card_id)

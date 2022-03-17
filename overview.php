@@ -17,18 +17,14 @@
 <ul>
     <?php foreach ($cards as $card) : ?>
         <li><?= $card['pokeName'] ?>
-            <a href="index.php?action=edit&card_id=<?= $card['id']; ?>">Edit</a>
+            <a href="index.php?action=show&card_id=<?= $card['id']; ?>">Show</a>.
+            <a href="index.php?action=edit&card_id=<?= $card['id']; ?>">Edit</a>.
             <a href="index.php?action=delete&card_id=<?= $card['id']; ?>">Delete</a>
         </li>
-        <li><?= $card['pokeType'] ?></li>
-        <li><?= $card['hp'] ?></li>
-        <li><?= $card['ability'] ?></li>
-        <li><?= $card['attack1'] ?></li>
-        <li><?= $card['attack2'] ?></li>
-        <li><?= $card['resistance'] ?></li>
-        <li><?= $card['weakness'] ?></li><br>
     <?php endforeach; ?>
 </ul>
+
+<?= $cardInfo ?>
 
 </body>
 </html>
