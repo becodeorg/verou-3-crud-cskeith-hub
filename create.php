@@ -9,10 +9,10 @@
 <body>
 <form action="index.php?action=create" method="post">
   <label for="name">Name:</label><br>
-  <input type="text" id="name" name="pokeName" value=""><br>
+  <input type="text" id="pokeName" name="pokeName" value=""><br>
 
-  <label for="type">Type:</label><br>
-  <input type="text" id="type" name="type" value=""><br>
+  <label for="pokeType">pokeType:</label><br>
+  <input type="text" id="pokeType" name="pokeType" value=""><br>
 
   <label for="hp">Hp:</label><br>
   <input type="text" id="hp" name="hp" value=""><br>

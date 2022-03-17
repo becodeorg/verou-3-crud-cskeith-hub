@@ -46,8 +46,9 @@ switch ($action) {
         create($cardRepository);
         break;
     case 'edit':
-        require 'edit.php';
+        echo 'Cow';
         update($cardRepository, $card_id);
+        require 'edit.php';
         break;
     case 'delete':
         require 'delete.php';
@@ -69,7 +70,7 @@ function create($cardRepository)
 {
     // TODO: provide the create logic
     
-    if(isset($_POST['submit'])){ // in Use of submit
+    if(!empty($_POST['submit'])){ // in Use of submit
         $cardRepository->create();
         header("location: index.php");
     } 
@@ -77,10 +78,11 @@ function create($cardRepository)
 
 function update($cardRepository, $card_id)
 {
-    
+    echo 'Chicken';
     // TODO: provide the update logic
     if(isset($_POST['submit'])){ // in Use of submit
         $cardRepository->update($card_id);
+        echo 'Rat';
        header("location: index.php");
     } 
 }

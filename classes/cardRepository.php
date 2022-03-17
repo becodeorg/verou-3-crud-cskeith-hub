@@ -17,7 +17,7 @@ class CardRepository
     {
         
         $name = $_POST['pokeName'];
-        $type = $_POST['type'];
+        $type = $_POST['pokeType'];
         $hp = $_POST['hp'];
         $ability = $_POST['ability'];
         $attack1 = $_POST['attack1'];
@@ -25,7 +25,7 @@ class CardRepository
         $resistance = $_POST['resistance'];
         $weakness = $_POST['weakness'];
 
-        $query = "INSERT INTO pokemon (`pokeName`,`type`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
+        $query = "INSERT INTO pokemon (`pokeName`,`pokeType`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
             '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance')";
 
         $this->databaseManager->connection->query($query);      
@@ -66,11 +66,19 @@ class CardRepository
 
     public function update($card_id)
     {
-        echo $card_id;
-        $name = $_POST['name'];
+        echo 'Rabbit';
+        $name = $_POST['pokeName'];
+        $type = $_POST['pokeType'];
+        $hp = $_POST['hp'];
+        $ability = $_POST['ability'];
+        $attack1 = $_POST['attack1'];
+        $attack2 = $_POST['attack2'];
+        $resistance = $_POST['resistance'];
+        $weakness = $_POST['weakness'];
         
-        $query = "UPDATE pokemon SET pokeName = '$name' WHERE id = '$card_id';";
+        $query = "UPDATE pokemon SET pokeName = ('$name'), pokeType = ('$type'), hp = ('$hp'), ability = ('$ability'), attack1 = ('$attack1'), attack2 = ('$attack2'), resistance = ('$resistance'), weakness = ('$weakness') WHERE id = ('$card_id')";
         $this->databaseManager->connection->query($query);
+        echo 'Dog';
         
     }
 

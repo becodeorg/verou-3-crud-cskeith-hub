@@ -20,7 +20,7 @@
             <a href="index.php?action=edit&card_id=<?= $card['id']; ?>">Edit</a>
             <a href="index.php?action=delete&card_id=<?= $card['id']; ?>">Delete</a>
         </li>
-        <li><?= $card['type'] ?></li>
+        <li><?= $card['pokeType'] ?></li>
         <li><?= $card['hp'] ?></li>
         <li><?= $card['ability'] ?></li>
         <li><?= $card['attack1'] ?></li>
