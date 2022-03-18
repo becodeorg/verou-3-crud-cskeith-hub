@@ -28,10 +28,29 @@ class CardRepository
         $resistance = $_POST['resistance'];
         $weakness = $_POST['weakness'];
 
-        $query = "INSERT INTO pokemon (`pokeName`,`pokeType`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
-            '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance')";
+        // TODO Validate $_post 
 
-        $this->databaseManager->connection->query($query);      
+        $query = $this->databaseManager->connection->prepare
+        (
+            "INSERT INTO pokemon (`pokeName`,`pokeType`,`hp`,`ability`,`attack1`, `attack2`,`resistance`,`weakness`) 
+             VALUES (:pokeName, :pokeType,:hp,:ability,:attack1,:attack2,:resistance,:weakness)"
+        );
+
+        $query->bindParam(':pokeName',$name);
+        $query->bindParam(':pokeType',$type);
+        $query->bindParam(':hp',$hp);
+        $query->bindParam(':ability',$ability);
+        $query->bindParam(':attack1',$attack1);
+        $query->bindParam(':attack2',$attack2);
+        $query->bindParam(':resistance',$resistance);
+        $query->bindParam(':weakness',$weakness);
+
+        $query->execute();
+
+        // $query = "INSERT INTO pokemon (`pokeName`,`pokeType`,`hp`,`ability`,`attack1`, `attack2`,`weakness`,`resistance`) VALUES ('$name', 
+        //     '$type','$hp','$ability','$attack1','$attack2','$weakness','$resistance')";
+
+        // $this->databaseManager->connection->query($query);      
     }
 
     // Get one

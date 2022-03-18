@@ -70,7 +70,7 @@ function create($cardRepository)
     echo "Chicken";
     if(!empty($_POST['submit'])){ 
         $cardRepository->create();
-        // header("location: index.php");
+        header("location: index.php");
     } 
 }
 
