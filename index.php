@@ -29,18 +29,19 @@ $card_id = $_GET['card_id'] ?? null;
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_GET);
+// echo "</pre>";
 
 switch ($action) {
     case 'create':
         require 'create.php';
         create($cardRepository);
+        echo "Cow";
         break;
     case 'show':
         find($cardRepository, $card_id);
@@ -65,9 +66,10 @@ function overview()
 
 function create($cardRepository)
 {
+    echo "Chicken";
     if(!empty($_POST['submit'])){ 
         $cardRepository->create();
-        header("location: index.php");
+        // header("location: index.php");
     } 
 }
 

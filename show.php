@@ -12,6 +12,7 @@
     <ul>
         <a href="index.php?action=edit&card_id=<?= $card_id; ?>">Edit</a>
         <a href="index.php?action=delete&card_id=<?= $card_id; ?>">Delete</a>
+        <li><p>Pokèmon ID: <?= $card_id ?></p></li>
         <li><p>Name: <?= $cardInfo['pokeName'] ?></p></li>
         <li><p>Type: <?= $cardInfo['PokeType'] ?></p></li>
         <li><p>Hp: <?= $cardInfo['hp'] ?></p></li>
@@ -20,6 +21,7 @@
         <li><p>Attack 2: <?= $cardInfo['attack2'] ?></p></li>
         <li><p>Resistance: <?= $cardInfo['resistance'] ?></p></li>
         <li><p>Weakness: <?= $cardInfo['weakness'] ?></p></li> 
+        <a href="index.php">Return</a>
     </ul>
 </body>
 

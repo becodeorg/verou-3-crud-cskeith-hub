@@ -18,7 +18,7 @@ class CardRepository
 
     public function create(): void
     {
-        
+        echo "Dog";
         $name = $_POST['pokeName'];
         $type = $_POST['pokeType'];
         $hp = $_POST['hp'];
@@ -50,7 +50,6 @@ class CardRepository
     {
         // TODO: replace dummy data by real one
         $query = "SELECT * FROM `pokemon`"; 
-        
         $result = $this->databaseManager->connection->query($query);   
         return $result; 
         // return 
