@@ -19,7 +19,7 @@ $databaseManager->connect();
 // This example is about a Pokémon card collection
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
-$cards = $cardRepository->get();
+
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
@@ -55,12 +55,13 @@ switch ($action) {
         delete($cardRepository, $card_id);
         break;  
     default:
-        require 'overview.php';
+        overview($cardRepository);
         break;
 }
 
-function overview()
+function overview($cardRepository)
 {
+    $cards = $cardRepository->get();
     require 'overview.php';
 }
 
