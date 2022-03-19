@@ -91,6 +91,11 @@ class CardRepository
 
     public function update($card_id)
     {
+
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+
         $name = $_POST['pokeName'];
         $type = $_POST['pokeType'];
         $hp = $_POST['hp'];
@@ -102,51 +107,104 @@ class CardRepository
 
         if(!empty($name)&&($type)&&($hp)&&($ability)&&($attack1)&&($attack2)&&($resistance)&&($weakness))
         {
-            $query = "UPDATE pokemon SET pokeName = ('$name'), pokeType = ('$type'), hp = ('$hp'), ability = ('$ability'), attack1 = ('$attack1'), attack2 = ('$attack2'), resistance = ('$resistance'), weakness = ('$weakness') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET pokeName = :pokeName, pokeType = :pokeType, hp = :hp, ability = :ability, attack1 = :attack1, attack2 = :attack2, resistance = :resistance, weakness = :weakness WHERE id = :card_id"
+            );
+
+            $query->bindParam(':pokeName',$name);
+            $query->bindParam(':pokeType',$type);
+            $query->bindParam(':hp',$hp);
+            $query->bindParam(':ability',$ability);
+            $query->bindParam(':attack1',$attack1);
+            $query->bindParam(':attack2',$attack2);
+            $query->bindParam(':resistance',$resistance);
+            $query->bindParam(':weakness',$weakness);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($name))
         {
-            $query = "UPDATE pokemon SET pokeName = ('$name') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET pokeName = :pokeName WHERE id = :card_id"
+            );
+            $query->bindParam(':pokeName',$name);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
+
         }
         elseif(!empty($type))
         {
-            $query = "UPDATE pokemon SET pokeType = ('$type') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET pokeType = :pokeType WHERE id = :card_id"
+            );
+            $query->bindParam(':pokeType',$type);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($hp))
         {
-            $query = "UPDATE pokemon SET hp = ('$hp') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET hp = :hp WHERE id = :card_id"
+            );
+            $query->bindParam(':hp',$hp);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($ability))
         {
-            $query = "UPDATE pokemon SET ability = ('$ability') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET ability = :ability WHERE id = :card_id"
+            );
+            $query->bindParam(':ability',$ability);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($attack1))
         {
-            $query = "UPDATE pokemon SET attack1 = ('$attack1') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET attack1 = :attack1 WHERE id = :card_id"
+            );
+            $query->bindParam(':attack1',$attack1);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($attack2))
         {
-            $query = "UPDATE pokemon SET attack2 = ('$attack2') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET attack2 = :attack2 WHERE id = :card_id"
+            );
+            $query->bindParam(':attack2',$attack2);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($resistance))
         {
-            $query = "UPDATE pokemon SET resistance = ('$resistance') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET resistance = :resistance WHERE id = :card_id"
+            );
+            $query->bindParam(':resistance',$resistance);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute();
         }
         elseif(!empty($weakness))
         {
-            $query = "UPDATE pokemon SET weakness= ('$weakness') WHERE id = ('$card_id')";
-            $this->databaseManager->connection->query($query); 
+            $query = $this->databaseManager->connection->prepare
+            (
+                "UPDATE pokemon SET weakness = :weakness WHERE id = :card_id"
+            );
+            $query->bindParam(':weakness',$weakness);
+            $query->bindParam(':card_id', $card_id);
+            $query->execute(); 
+            
         }
-        
-       
     }
 
     public function delete($card_id)
