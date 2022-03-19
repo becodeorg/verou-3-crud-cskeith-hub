@@ -209,8 +209,12 @@ class CardRepository
 
     public function delete($card_id)
     {
-        $delete = "DELETE FROM `pokemon` WHERE `pokemon`.`id` = '$card_id';";
-        $this->databaseManager->connection->query($delete);
+        $query = $this->databaseManager->connection->prepare
+        (
+            "DELETE FROM pokemon WHERE pokemon . id  = :card_id;"
+        );
+        $query->bindParam(':card_id', $card_id);
+        $query->execute();
     }
 
 }
