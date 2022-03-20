@@ -60,29 +60,28 @@ class CardRepository
         $result = $this->databaseManager->connection->query($query);  
         $cardInfo = $result->fetch(); 
         require 'show.php';
-        return $cardInfo;    
+        return $cardInfo; 
+        
+        // $result = $this->databaseManage->connection->query
+        // (
+        //     "SELECT pokeName, PokeType, hp, ability, attack1, attack2, weakness, resistance FROM pokemon WHERE id = :card_id"
+        // );
+
+        // $result->bindParam(':card_id', $card_id);
+        // $result->execute(); 
     }
      
 
     // Get all
     public function get(): PDOStatement
     {
-        // TODO: replace dummy data by real one
-        $query = "SELECT * FROM `pokemon`"; 
-        $result = $this->databaseManager->connection->query($query);   
-        return $result; 
-        // return 
-        // [
-        //     ['name' => 'Colin'],
-        //     ['type' => 'human'],
-        //     ['hp' => '1000'],
-        //     ['ability' => 'Sleep'],
-        //     ['attack1' => 'Snor'],
-        //     ['attack2' => 'Fart'],
-        //     ['resistance' => 'Bullshit'],
-        //     ['weakness' => 'Food'],
-        // ];
-
+        $query = $this->databaseManager->connection->query
+        (
+            "SELECT * FROM pokemon "
+        );
+        $query->execute();
+        return $query; 
+      
         // We get the database connection first, so we can apply our queries with it
         // return $this->databaseManager->connection-> (runYourQueryHere)
     }
