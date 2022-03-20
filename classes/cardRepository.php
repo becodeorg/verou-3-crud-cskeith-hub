@@ -56,19 +56,21 @@ class CardRepository
     // Get one
     public function find($card_id): array
     {
-        $query = "SELECT pokeName, PokeType, hp, ability, attack1, attack2, weakness, resistance FROM pokemon WHERE id = ('$card_id')"; 
-        $result = $this->databaseManager->connection->query($query);  
-        $cardInfo = $result->fetch(); 
+        // $query = "SELECT pokeName, PokeType, hp, ability, attack1, attack2, weakness, resistance FROM pokemon WHERE id = ('$card_id')"; 
+        // $result = $this->databaseManager->connection->query($query);  
+        // $cardInfo = $result->fetch(); 
+        // require 'show.php';
+        // return $cardInfo; 
+        
+        $query = $this->databaseManager->connection->prepare
+        (
+            "SELECT pokeName, PokeType, hp, ability, attack1, attack2, weakness, resistance FROM pokemon WHERE id = :card_id"
+        );
+        $query->bindParam(':card_id', $card_id);
+        $cardInfo = $query->fetch();
         require 'show.php';
         return $cardInfo; 
         
-        // $result = $this->databaseManage->connection->query
-        // (
-        //     "SELECT pokeName, PokeType, hp, ability, attack1, attack2, weakness, resistance FROM pokemon WHERE id = :card_id"
-        // );
-
-        // $result->bindParam(':card_id', $card_id);
-        // $result->execute(); 
     }
      
 
